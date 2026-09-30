@@ -1,0 +1,20 @@
+{
+  "roles": [
+    "network_requester",
+    "network_approver",
+    "network_fulfiller",
+    "network_admin"
+  ],
+  "access_matrix": {
+    "network_requester": "Read own requests and submit catalog requests; no access to other users' sensitive request data.",
+    "network_approver": "Read requests requiring their approval and related approval records; approve/reject through standard approval mechanisms.",
+    "network_fulfiller": "Read/update requests assigned to their fulfillment group; cannot alter approval decisions.",
+    "network_admin": "Full administration of the Network Request application and configuration."
+  },
+  "acl_principles": [
+    "Prefer role/group conditions over hard-coded user sys_ids.",
+    "Enforce ownership/assignment checks for requester and fulfiller access.",
+    "Protect sensitive fields with field-level ACLs where required.",
+    "Do not grant wildcard access to all authenticated users."
+  ]
+}
