@@ -1,0 +1,27 @@
+table:
+  name: u_network_request
+  label: Network Request
+  auto_number:
+    field: number
+    prefix: NET
+    example: NET0001001
+
+fields:
+  - {name: number, type: string, role: auto_number}
+  - {name: requested_for, type: reference, reference: sys_user}
+  - {name: opened_by, type: reference, reference: sys_user}
+  - {name: assignment_group, type: reference, reference: sys_user_group}
+  - {name: assigned_to, type: reference, reference: sys_user}
+  - {name: mobile_number, type: string}
+  - {name: request_type, type: choice}
+  - {name: connection_type, type: choice}
+  - {name: existing_id, type: string}
+  - {name: business_justification, type: journal}
+  - {name: total_amount, type: decimal}
+  - {name: mode_of_payment, type: choice}
+  - {name: network_address, type: string}
+  - {name: approval_status, type: choice, choices: [requested, approved, rejected]}
+  - {name: request_status, type: choice, choices: [submitted, awaiting_approval, approved, rejected, in_progress, completed, cancelled]}
+  - {name: urgency, type: choice}
+  - {name: related_ritm, type: reference, reference: sc_req_item}
+  - {name: additional_network_configuration, type: journal}
