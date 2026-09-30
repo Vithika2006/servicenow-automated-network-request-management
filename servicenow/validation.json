@@ -1,0 +1,13 @@
+{
+  "rules": [
+    "Catalog mandatory fields must be populated before submission.",
+    "Requested For and opened_on_behalf_of must reference active sys_user records.",
+    "Mobile Number must contain a valid 10-digit Indian mobile number.",
+    "Total Amount must be numeric and greater than or equal to zero.",
+    "Choice variables must use configured choice values only.",
+    "Existing ID is mandatory only when Type of Connection is Existing.",
+    "Fulfillment must not begin until required approval is approved.",
+    "Allowed lifecycle states: Submitted, Awaiting Approval, Approved, Rejected, In Progress, Completed, Cancelled.",
+    "Rejected requests must not create or continue fulfillment work."
+  ]
+}
