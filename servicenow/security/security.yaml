@@ -1,0 +1,19 @@
+roles:
+  - network_requester
+  - network_approver
+  - network_fulfiller
+  - network_admin
+
+table: u_network_request
+
+access:
+  requester: own_record
+  approver: assigned_approval
+  fulfiller: fulfillment_scope
+  admin: application_admin
+
+principles:
+  - least_privilege
+  - no_unrestricted_allow_all
+  - no_hard_coded_user_sys_ids
+  - sensitive_fields_protected
