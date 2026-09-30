@@ -1,0 +1,23 @@
+{
+  "policies": [
+    {
+      "name": "Existing connection requires Existing ID",
+      "condition": "connection_type == Existing",
+      "actions": [
+        {
+          "variable": "existing_id",
+          "visible": true,
+          "mandatory": true
+        }
+      ],
+      "reverse_actions": [
+        {
+          "variable": "existing_id",
+          "visible": false,
+          "mandatory": false,
+          "clear_value": true
+        }
+      ]
+    }
+  ]
+}
