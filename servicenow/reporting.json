@@ -1,0 +1,34 @@
+{
+  "reports": [
+    {
+      "name": "Network Requests by Status",
+      "source": "u_network_request",
+      "group_by": "request_status"
+    },
+    {
+      "name": "Network Requests by Assignment Group",
+      "source": "u_network_request",
+      "group_by": "assignment_group"
+    },
+    {
+      "name": "Network Requests by Request Type",
+      "source": "u_network_request",
+      "group_by": "request_type"
+    },
+    {
+      "name": "Awaiting Approval",
+      "source": "u_network_request",
+      "filter": "approval_status == Requested"
+    },
+    {
+      "name": "Completed Network Requests",
+      "source": "u_network_request",
+      "filter": "request_status == Completed"
+    },
+    {
+      "name": "Network Request Volume Over Time",
+      "source": "u_network_request",
+      "group_by": "created_date"
+    }
+  ]
+}
