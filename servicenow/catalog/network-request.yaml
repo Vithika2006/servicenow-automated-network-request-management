@@ -1,0 +1,74 @@
+name: Network Request
+category: Network
+short_description: Network Request Management
+
+variables:
+  - name: requested_for
+    type: reference
+    reference: sys_user
+    mandatory: true
+  - name: mobile_number
+    type: single_line_text
+    mandatory: true
+  - name: connection_type
+    type: choice
+    choices: [new, existing]
+    mandatory: true
+  - name: existing_id
+    type: single_line_text
+    conditional: connection_type == existing
+    visible_when_true: true
+    mandatory_when_true: true
+  - name: total_amount
+    type: decimal
+    mandatory: true
+  - name: mode_of_payment
+    type: choice
+    choices: [UPI, CARD]
+    mandatory: true
+  - name: address
+    type: multi_line_text
+    mandatory: true
+  - name: request_type
+    type: choice
+    choices: [new_connection, change, access, troubleshooting]
+    mandatory: true
+  - name: business_justification
+    type: multi_line_text
+    mandatory: true
+  - name: urgency
+    type: choice
+    choices: [low, medium, high, critical]
+    mandatory: true
+  - name: device_type
+    type: choice
+    mandatory: false
+  - name: please_specify
+    type: single_line_text
+    conditional: device_type == others
+    visible_when_true: true
+    mandatory_when_true: true
+
+variable_set:
+  name: Network Request User Context
+  variables:
+    - name: opened_on_behalf_of
+      type: reference
+      reference: sys_user
+    - name: email_id
+      type: single_line_text
+      derived_from: opened_on_behalf_of.email
+    - name: user_name
+      type: single_line_text
+      derived_from: opened_on_behalf_of.name
+    - name: phone_number
+      type: single_line_text
+      derived_from: opened_on_behalf_of.phone
+
+ui_policies:
+  - name: Show Existing ID
+    condition: connection_type == existing
+    actions:
+      existing_id: {visible: true, mandatory: true}
+    else_actions:
+      existing_id: {visible: false, mandatory: false}
