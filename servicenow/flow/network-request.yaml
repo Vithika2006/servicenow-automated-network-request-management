@@ -1,0 +1,31 @@
+flow:
+  name: Network Request
+  trigger:
+    type: service_catalog
+    catalog_item: Network Request
+
+steps:
+  - {name: Get Catalog Variables, action: get_catalog_variables, source: trigger.requested_item}
+  - name: Create Network Request
+    action: create_record
+    table: u_network_request
+  - name: Set Awaiting Approval
+    action: update_record
+    request_status: awaiting_approval
+    approval_status: requested
+  - name: Ask for Approval
+    action: ask_for_approval
+    standard_route: requested_for.manager
+    sensitive_route: [requested_for.manager, network_security_group]
+  - name: Approval Decision
+    action: if
+    condition: approval outcome is approved
+    approved:
+      - {action: create_catalog_task, assignment_group: network_fulfillment}
+      - {action: update_record, request_status: in_progress}
+    rejected:
+      - {action: update_record, request_status: rejected, approval_status: rejected}
+      - {action: notify_requester, reason: rejected}
+  - name: Completion
+    action: update_record
+    request_status: completed
