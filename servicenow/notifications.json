@@ -1,0 +1,64 @@
+{
+  "notifications": [
+    {
+      "name": "Network Request Submitted",
+      "event": "request.submitted",
+      "recipient": "requested_for",
+      "include": [
+        "number",
+        "request_type",
+        "status"
+      ]
+    },
+    {
+      "name": "Network Request Approval Required",
+      "event": "approval.required",
+      "recipient": "approver",
+      "include": [
+        "number",
+        "requested_for",
+        "request_type",
+        "next_action"
+      ]
+    },
+    {
+      "name": "Network Request Approved",
+      "event": "request.approved",
+      "recipient": "requested_for",
+      "include": [
+        "number",
+        "approval_status",
+        "status"
+      ]
+    },
+    {
+      "name": "Network Request Rejected",
+      "event": "request.rejected",
+      "recipient": "requested_for",
+      "include": [
+        "number",
+        "approval_status",
+        "status"
+      ]
+    },
+    {
+      "name": "Network Request Fulfillment Started",
+      "event": "fulfillment.started",
+      "recipient": "requested_for",
+      "include": [
+        "number",
+        "assignment_group",
+        "status"
+      ]
+    },
+    {
+      "name": "Network Request Completed",
+      "event": "request.completed",
+      "recipient": "requested_for",
+      "include": [
+        "number",
+        "status"
+      ]
+    }
+  ]
+}
