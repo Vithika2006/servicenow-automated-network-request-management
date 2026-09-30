@@ -1,0 +1,33 @@
+{
+  "name": "Network Request User Details",
+  "variables": [
+    {
+      "name": "opened_on_behalf_of",
+      "label": "Opened on behalf of",
+      "type": "reference",
+      "reference": "sys_user",
+      "mandatory": true
+    },
+    {
+      "name": "email_id",
+      "label": "Email ID",
+      "type": "single_line_text",
+      "read_only": true,
+      "populate_from": "opened_on_behalf_of.email"
+    },
+    {
+      "name": "user_name",
+      "label": "User Name",
+      "type": "single_line_text",
+      "read_only": true,
+      "populate_from": "opened_on_behalf_of.name"
+    },
+    {
+      "name": "phone_number",
+      "label": "Phone Number",
+      "type": "single_line_text",
+      "read_only": true,
+      "populate_from": "opened_on_behalf_of.mobile_phone"
+    }
+  ]
+}
