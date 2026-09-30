@@ -1,0 +1,91 @@
+{
+  "catalog_item": "Network Request",
+  "variables": [
+    {
+      "name": "requested_for",
+      "label": "Requested For",
+      "type": "reference",
+      "reference": "sys_user",
+      "mandatory": true
+    },
+    {
+      "name": "mobile_number",
+      "label": "Mobile Number",
+      "type": "single_line_text",
+      "mandatory": true,
+      "validation": "10-digit Indian mobile number"
+    },
+    {
+      "name": "connection_type",
+      "label": "Type of Connection",
+      "type": "choice",
+      "mandatory": true,
+      "choices": [
+        "New",
+        "Existing"
+      ]
+    },
+    {
+      "name": "existing_id",
+      "label": "Existing ID",
+      "type": "single_line_text",
+      "mandatory": false,
+      "visible_when": "connection_type == Existing",
+      "mandatory_when": "connection_type == Existing"
+    },
+    {
+      "name": "request_type",
+      "label": "Request Type",
+      "type": "choice",
+      "mandatory": true,
+      "choices": [
+        "New Connection",
+        "Change",
+        "Disconnect",
+        "Network Access",
+        "Other"
+      ]
+    },
+    {
+      "name": "business_justification",
+      "label": "Business Justification",
+      "type": "multi_line_text",
+      "mandatory": true
+    },
+    {
+      "name": "total_amount",
+      "label": "Total Amount",
+      "type": "decimal",
+      "mandatory": true,
+      "min": 0
+    },
+    {
+      "name": "mode_of_payment",
+      "label": "Mode of Payment",
+      "type": "choice",
+      "mandatory": true,
+      "choices": [
+        "UPI",
+        "Card"
+      ]
+    },
+    {
+      "name": "address",
+      "label": "Network/Customer Address",
+      "type": "multi_line_text",
+      "mandatory": true
+    },
+    {
+      "name": "urgency",
+      "label": "Urgency",
+      "type": "choice",
+      "mandatory": true,
+      "choices": [
+        "Low",
+        "Medium",
+        "High",
+        "Critical"
+      ]
+    }
+  ]
+}
